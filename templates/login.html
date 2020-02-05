@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EvilCorp</title>
+</head>
+<body>
+	<h1>EvilCorp Login</h1>
+	<p id="error-message"></p>
+	<input id="username" name="username">
+	<br>
+	<input id="password" name="password" type="password">
+	<br>
+	<button id="submit">Submit</button>
+
+	<script type="text/javascript">
+		document.getElementById('submit').onclick = function() {
+			var errorMessage = document.getElementById('error-message');
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+
+			fetch('http://127.0.0.1:5000/login', {
+				method: 'POST', // *GET, POST, PUT, DELETE, etc.
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: 'username=' + username + '&password=' + password // body data type must match "Content-Type" header
+			}).then((response) => {
+				errorMessage.innerText = '';
+				if (response.ok) {
+					window.location.replace("http://127.0.0.1:5000/profile");
+				} else if (response.status === 404 ) {
+					errorMessage.innerText = 'Could not find a user with that username';
+				} else if (response.status === 403) {
+					errorMessage.innerText = 'Incorrect password for user';
+				}
+			});
+		}
+	</script>
+</body>
+</html>
