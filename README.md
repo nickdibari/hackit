@@ -1,6 +1,8 @@
 # hackit
 Demo site for Cypurr presentation on password security
 
+All password lists were scraped from the [SecLists/Passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) index
+
 
 ## Installation
 1. Create a Python3 virtual enviornment
