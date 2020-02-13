@@ -22,13 +22,16 @@ def main(username, use_myspace=False):
 
         if resp.status_code == 404:
             print(f'Username {username} is not valid')
+            return
 
         elif resp.status_code == 200:
             print(f'Password for {username} is {password}')
-            break
+            return
 
         if count % 10 == 0:
             print(f'Tried {count} passwords')
+
+    print(f'Could not find password for {username}')
 
 
 if __name__ == '__main__':
