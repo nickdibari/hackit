@@ -50,8 +50,12 @@ def main(args):
     current_dir = os.getcwd()
     password_file = os.path.join(current_dir, password_list)
 
-    with open(password_file) as password_list:
-        passwords = password_list.read().split('\n')
+    try:
+        with open(password_file) as password_list:
+            passwords = password_list.read().split('\n')
+    except FileNotFoundError:
+        log(f'Could not find password list {password_file}', bcolors.FAIL)
+        sys.exit(1)
 
     hack(username, passwords)
 
