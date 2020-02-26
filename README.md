@@ -34,21 +34,21 @@ source venv/bin/activate
 
 `(venv) python app.py`
 
-2. Open the login page
-- 127.0.0.1:5000/
+2. Open the login page at `127.0.0.1:5000/`
 
-3. Show the found users list
-- Could have come from LinkedIn
+3. Show the found users list (scraped from LinkedIn search?)
 
 4. Show information gathering on login page
-- What happens when you submit a login?
-- Where does the request go?
-- What information is included in the request?
-- What happens when you try to login with a fake username?
-- What happens on a failed login?
+- Try to login with the whole email (What status is printed?)
+- Try to login with just the user part (What *different* status is printed?)
 
-5. Show hack script
-- Where do the password lists come from?
-- How can we test logins?
-- How do we know when we found a login combo?
+5. Show password lists
+- Sourced from [SecLists passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
+- Go through common list from the 10 million passwords list
 
+6. Hack a user!
+- Run `python hack.py jsmith`
+- Show a successful login with retrieved password
+- Run `python hack.py aadams` (How long did it take?)
+- Show failure for vhedie when using common passwords (What else can we do?)
+- Run `python hack.py vhedie --use_myspace` and show successful login
