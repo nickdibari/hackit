@@ -45,12 +45,10 @@ def hack(username, passwords):
 
 def main(args):
     username = args[1]
+    password_list = args[2]
 
     current_dir = os.getcwd()
-    if '--use_myspace' in args:
-        password_file = os.path.join(current_dir, 'password_lists/myspace.txt')
-    else:
-        password_file = os.path.join(current_dir, 'password_lists/common_passwords.txt')
+    password_file = os.path.join(current_dir, password_list)
 
     with open(password_file) as password_list:
         passwords = password_list.read().split('\n')
@@ -59,12 +57,12 @@ def main(args):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        log('''Usage: python hack.py username [--use_myspace]\n
+    if len(sys.argv) < 3:
+        log('''Usage: python hack.py username password_list\n
 Iterate over a list of passwords for a username to brute-force login
 to the EvilCorp internal site\n
 username      : Username of account to hack
---use_myspace : Optionally use Myspace leaked password list
+password_list : Path of password list to use
 ''', bcolors.HEADER)
         sys.exit(0)
 
