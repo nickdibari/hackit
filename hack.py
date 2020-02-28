@@ -27,7 +27,11 @@ def hack(username, passwords):
             'password': password
         }
 
-        resp = requests.post('http://127.0.0.1:5000/login', data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+        resp = requests.post(
+            'http://127.0.0.1:5000/login',
+            data=data,
+            headers={'Content-Type': 'application/x-www-form-urlencoded'}
+        )
 
         if resp.status_code == 404:
             log(f'Username {username} is not valid', bcolors.FAIL)
