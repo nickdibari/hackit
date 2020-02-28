@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import sys
 
@@ -74,4 +75,9 @@ password_list : Path of password list to use
 ''', bcolors.HEADER)
         sys.exit(0)
 
+    start = datetime.now()
     main(sys.argv)
+
+    now = datetime.now()
+    elapsed = now - start
+    log(f'Took {elapsed.seconds}.{elapsed.microseconds}s')
