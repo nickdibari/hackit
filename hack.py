@@ -80,4 +80,4 @@ password_list : Path of password list to use
 
     now = datetime.now()
     elapsed = now - start
-    log(f'Took {elapsed.seconds}.{elapsed.microseconds}s')
+    log(f'Took {elapsed.seconds}.{elapsed.microseconds}s', bcolors.WARNING)
