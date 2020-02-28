@@ -67,7 +67,7 @@ def main(args):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        log('''Usage: python hack.py username password_list\n
+        log('''Usage: python hack.py [username] [password_list]\n
 Iterate over a list of passwords for a username to brute-force login
 to the EvilCorp internal site\n
 username      : Username of account to hack
