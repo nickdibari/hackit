@@ -31,7 +31,8 @@ def login_endpoint():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    username = request.args.get('username')
+    return render_template('profile.html', username=username)
 
 
 if __name__ == '__main__':

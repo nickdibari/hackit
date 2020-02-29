@@ -37,7 +37,7 @@
 			}).then((response) => {
 				errorMessage.innerText = '';
 				if (response.ok) {
-					window.location.href = 'http://127.0.0.1:5000/profile';
+					window.location.href = 'http://127.0.0.1:5000/profile?username=' + username;
 				} else if (response.status === 404 ) {
 					errorMessage.innerText = 'Could not find a user with that username';
 				} else if (response.status === 403) {
